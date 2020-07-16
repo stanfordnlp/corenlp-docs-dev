@@ -1,0 +1,94 @@
+# This is your sidebar TOC. The sidebar code loops through sections here and provides the appropriate formatting.
+
+# Sidebar
+entries:
+- title: Sidebar
+  subcategories:
+
+    - title: Overview
+
+      items:
+        - title: About
+          url: index.html#about
+
+        - title: Get Started
+          url: index.html#get-started
+
+        - title: License and Citing
+          url: index.html#license
+
+    - title: Usage
+
+      items:
+
+        - title: Installation & Getting Started
+          url: installation_usage.html
+
+        - title: Tutorials
+          url: tutorials.html
+
+        - title: Available Models
+          url: models.html
+
+        - title: System Performance
+          url: performance.html
+        
+        - title: Model Training and Evaluation
+          url: training.html
+        
+    - title : Neural Pipeline
+
+      items:
+        - title: Pipeline and Processors
+          url: pipeline.html
+
+        - title: Data Objects and Annotations
+          url: data_objects.html
+
+        - title: Data Conversion
+          url: data_conversion.html
+
+        - title: TokenizeProcessor
+          url: tokenize.html
+
+        - title: MWTProcessor
+          url: mwt.html
+        
+        - title: POSProcessor
+          url: pos.html
+
+        - title: LemmaProcessor
+          url: lemma.html
+
+        - title: DepparseProcessor
+          url: depparse.html
+
+        - title: NERProcessor
+          url: ner.html
+
+    - title: Stanford CoreNLP Client
+        
+      items:
+        - title: Overview
+          url: corenlp_client.html#overview
+
+        - title: Setup
+          url: corenlp_client.html#setup
+
+        - title: Usage
+          url: corenlp_client.html#usage
+
+        - title: Customization
+          url: corenlp_client.html#customizing-properties-for-server-start-and-requests
+    
+    - title: Resources
+      
+      items:
+        - title: FAQ
+          url: faq.html
+     
+        - title: Release History
+          url: release_history.html
+        
+        - title: Model History
+          url: model_history.html
