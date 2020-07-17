@@ -20,8 +20,9 @@ homepage: true
 
 ## About
 
-CoreNLP is your one stop shop for natural language processing in Java! CoreNLP enables users to derive linguistic annotations for text, including
-parts of speech, named entities, numeric and time values, dependency and constituency parses, coreference, sentiment, quote attributions, and relations. 
+CoreNLP is your one stop shop for natural language processing in Java! CoreNLP enables users to derive linguistic annotations for text, including token
+and sentence boundaries, parts of speech, named entities, numeric and time values, dependency and constituency parses, coreference, sentiment, 
+quote attributions, and relations. 
 
 The centerpiece of CoreNLP is the pipeline. Pipelines take in raw text, run a series of NLP annotators on the text, and produce a final
 set of annotations.
@@ -31,6 +32,13 @@ set of annotations.
 <p align="center">
    <img src="assets/images/pipeline.png">
 </p>
+
+Pipelines produce CoreDocuments, data objects that contain all of the annotation information, accessible with a simple API, and serializable
+to a Google Protocol Buffer.
+
+<p align="center">
+  <img src="assets/images/text-to-annotation.png">
+</p> 
 
 ## Quickstart
 
