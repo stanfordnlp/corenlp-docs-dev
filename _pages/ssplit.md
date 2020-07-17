@@ -47,7 +47,7 @@ is one sentence per line:
 java -Xmx5g edu.stanford.nlp.pipeline.StanfordCoreNLP -annotators tokenize,ssplit -ssplit.eolonly -file input.txt
 ```
 
-## Tokenizing From Java
+## Sentence Splitting From Java
 
 ```java
 package edu.stanford.nlp.examples;
