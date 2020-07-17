@@ -14,7 +14,7 @@ Sentence splitting is the process of dividing text into sentences. For instance 
 
 | Name | Annotator class name | Requirement | Generated Annotation | Description |
 | --- | --- | --- | --- | --- |
-| tokenize | WordToSentencesAnnotator | TokensAnnotation | SentencesAnnotation | Splits text into sentences. |
+| ssplit | WordToSentencesAnnotator | TokensAnnotation | SentencesAnnotation | Splits text into sentences. |
 
 ## Options
 
