@@ -11,6 +11,10 @@ has_children: true
 
 The centerpiece of CoreNLP is the pipeline. Pipelines take in text or xml and generate full annotation objects.
 
+<p align="center">
+   <img src="assets/images/pipeline.png">
+</p>
+
 Pipelines are constructed with Properties objects which provide specifications for what annotators to run and
 how to customize the annotators.
 
