@@ -10,11 +10,15 @@ parent: Pipeline
 ## Description
 
 Tokenization is the process of turning text into tokens. For instance the sentence `Marie was born in Paris.` would be tokenized as the list `"Marie", "was", "born", "in", "Paris", "."`.
-CoreNLP splits texts into tokens with an elaborate collection of rules.
+CoreNLP splits texts into tokens with an elaborate collection of rules, designed to follow UD 2.0 specifications.
 
 | Name | Annotator class name | Requirement | Generated Annotation | Description |
 | --- | --- | --- | --- | --- |
 | tokenize | TokenizerAnnotator | - | TokensAnnotation (list of tokens), and CharacterOffsetBeginAnnotation, CharacterOffsetEndAnnotation, TextAnnotation (for each token) | Tokenizes text |
+
+## Tokenization For French, German, and Spanish
+
+It is important to note that the full tokenization process for French, German, and Spanish also involves running the [MWTAnnotator](https://stanfordnlp.github.io/corenlp-docs-dev/mwt.html) for multi word token expansion after sentence splitting. Most of the following documentation is focused on English tokenization.
 
 ## Options
 
@@ -56,13 +60,19 @@ The `tokenize.options` option accepts a wide variety of settings for the `PTBTok
 
 ## Tokenizing From The Command Line
 
-This will command will take in the text of the file `input.txt` and produce a human readable output of the tokens.
+This command will take in the text of the file `input.txt` and produce a human readable output of the tokens:
 
 ```bash
 java -Xmx5g edu.stanford.nlp.pipeline.StanfordCoreNLP -annotators tokenize -file input.txt
 ```
 
 Other output formats include `conllu`, `conll`, `json`, and `serialized`.
+
+The following command is an example of specifying `PTBTokenizer` options with the `tokenize.options` option:
+
+```bash
+java -Xmx5g edu.stanford.nlp.pipeline.StanfordCoreNLP -annotators tokenize -tokenize.options "splitHyphenated=false,americanize=false" -file input.txt
+```
 
 ## Tokenizing From Java
 
@@ -83,12 +93,16 @@ public class PipelineExample {
     Properties props = new Properties();
     // set the list of annotators to run
     props.setProperty("annotators", "tokenize");
+    // example of how to customize the PTBTokenizer (these are just random example settings!!)
+    props.setProperty("tokenize.options", "splitHyphenated=false,americanize=false");
     // build pipeline
     StanfordCoreNLP pipeline = new StanfordCoreNLP(props);
     // create a document object
-    CoreDocument document = pipeline.processToCoreDocument(text);
+    CoreDocument doc = new CoreDocument(text);
+    // annotate
+    pipeline.annotate(doc);
     // display tokens
-    for (CoreLabel tok : document.tokens()) {
+    for (CoreLabel tok : doc.tokens()) {
       System.out.println(String.format("%s\t%d\t%d", tok.word(), tok.beginPosition(), tok.endPosition()));
     }
   }
