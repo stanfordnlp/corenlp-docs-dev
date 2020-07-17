@@ -33,6 +33,8 @@ set of annotations.
    <img src="assets/images/pipeline.png">
 </p>
 
+### CoreDocument
+
 Pipelines produce CoreDocuments, data objects that contain all of the annotation information, accessible with a simple API, and serializable
 to a Google Protocol Buffer.
 
