@@ -8,7 +8,11 @@ nav_order: 1
 homepage: true
 ---
 
-# CoreNLP - NLP Processing In Java
+
+<p align="center">
+   <img src="assets/images/corenlp-title.png">
+</p>
+
 {: .no_toc }
 
 CoreNLP is your one stop shop for natural language processing in Java! CoreNLP enables users to derive linguistic annotations for text, including
