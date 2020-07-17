@@ -10,7 +10,8 @@ parent: Pipeline
 ## Description
 
 Multi Word Token Expansion is the process of splitting tokens into syntactic words which are used by downstream tasks such as part of speech tagging
-and dependency parsing. In CoreNLP, MWT expansion is only performed for French, German, and Spanish.
+and dependency parsing. In CoreNLP, MWT expansion is only performed for French, German, and Spanish. The expansions are designed to be consistent
+with the UD 2.0 standard.
 
 Each language has different rules for MWT expansion. For instance consider the Spanish sentence `Pude haber querido escribirlo.`. This sentence
 contains an example of an enclitic pronoun, which is split off from the verb by MWT expansion. So `escribirlo` is split into `escribir` and `lo`.
