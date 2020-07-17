@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Quote Extraction And Attribution
-keywords: quote
+keywords: quote, QuoteAnnotator, quote attribution
 permalink: '/quote.html'
 nav_order: 18
 parent: Pipeline
