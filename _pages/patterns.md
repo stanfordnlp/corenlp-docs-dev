@@ -1,10 +1,4 @@
 ---
-title: Bootstrapped surface patterns
-keywords: patterns
-permalink: '/patterns.html'
----
-
----
 layout: page
 title: Bootstrapped surface patterns
 keywords: patterns
