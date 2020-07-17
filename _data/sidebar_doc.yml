@@ -45,6 +45,9 @@ entries:
         - title: Tokenization
           url: tokenize.html
 
+        - title: Sentence Splitting
+          url: ssplit.html
+
         - title: Multi Word Tokenization
           url: mwt.html
         
