@@ -54,7 +54,7 @@ java -Xmx5g edu.stanford.nlp.pipeline.StanfordCoreNLP -props french -annotators 
 
 Other output formats include `conllu`, `conll`, `json`, and `serialized`.
 
-## Sentence Splitting From Java
+## Multi Word Token Expansion From Java
 
 ```java
 package edu.stanford.nlp.examples;
