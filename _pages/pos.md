@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Part-of-Speech & Morphological Features
+title: Part Of Speech
 keywords: POS, part-of-speech, morphological features, POSProcessor
 permalink: '/pos.html'
 nav_order: 6

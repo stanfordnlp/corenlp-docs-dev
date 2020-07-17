@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Tokenization & Sentence Segmentation
+title: Tokenization
 keywords: tokenize, TokenizeProcessor, tokenization, sentence segmentation
 permalink: '/tokenize.html'
 nav_order: 4
