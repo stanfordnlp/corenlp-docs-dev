@@ -13,6 +13,8 @@ homepage: true
    <img src="assets/images/corenlp-title.png">
 </p>
 
+[<i class="fab fa-java"></i> Download CoreNLP 4.0.0](http://nlp.stanford.edu/software/stanford-corenlp-latest.zip){: .btn .fs-5 .mr-2 .mb-md-0 }
+
 {: .no_toc }
 
 CoreNLP is your one stop shop for natural language processing in Java! CoreNLP enables users to derive linguistic annotations for text, including
@@ -25,4 +27,34 @@ parts of speech, named entities, numeric and time values, dependency and constit
 
 ## Quickstart
 
-[<i class="fab fa-java"></i> Download CoreNLP 4.0.0](http://nlp.stanford.edu/software/stanford-corenlp-latest.zip){: .btn .fs-5 .mr-2 .mb-md-0 }
+
+1. Download and unzip [CoreNLP 4.0.0](http://nlp.stanford.edu/software/stanford-corenlp-latest.zip)
+
+2. Download model jars for the language you want to work on and move the jars to the distribution directory.
+
+| Language | model jar | version |
+| :------- | :-------- | | :----- |
+| Arabic  | [download](http://nlp.stanford.edu/software/stanford-corenlp-4.0.0-models-arabic.jar) | 4.0.0 |
+| Chinese | [download](http://nlp.stanford.edu/software/stanford-corenlp-4.0.0-models-chinese.jar) | 4.0.0 |
+| English | [download](http://nlp.stanford.edu/software/stanford-corenlp-4.0.0-models-english.jar) | 4.0.0 |
+| English (KBP) | [download](http://nlp.stanford.edu/software/stanford-corenlp-4.0.0-models-english-kbp.jar) | 4.0.0 |
+| French | [download](http://nlp.stanford.edu/software/stanford-corenlp-4.0.0-models-french.jar) | 4.0.0 |
+| German | [download](http://nlp.stanford.edu/software/stanford-corenlp-4.0.0-models-german.jar) | 4.0.0 |
+| Spanish | [download](http://nlp.stanford.edu/software/stanford-corenlp-4.0.0-models-spanish.jar) | 4.0.0 |
+
+```bash
+mv /path/to/stanford-corenlp-4.0.0-models-french.jar /path/to/stanford-corenlp-4.0.0
+```
+
+3. Include the distribution directory in your CLASSPATH.
+
+```bash
+export CLASSPATH=$CLASSPATH:/path/to/stanford-corenlp-4.0.0/*:
+```
+
+4. You're ready to go! There are many ways to run a CoreNLP pipeline. For instance here's how to run a pipeline on a text file.
+
+```bash
+java -Xmx5g edu.stanford.nlp.pipeline.StanfordCoreNLP -file input.txt
+```
+
