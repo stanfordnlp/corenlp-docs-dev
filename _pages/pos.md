@@ -56,7 +56,6 @@ import edu.stanford.nlp.pipeline.*;
 
 import java.util.*;
 
-
 public class POSTaggingExample {
 
   public static String text = "Marie was born in Paris.";
