@@ -8,7 +8,7 @@ nav_order: 1
 homepage: true
 ---
 
-# CoreNLP - Suite Of Java NLP Tools
+# CoreNLP - NLP Processing In Java
 {: .no_toc }
 
 CoreNLP provides a set of human language technology tools. It can give the base forms of words, their parts of speech, whether they are names of companies, people, etc., normalize dates, times, and numeric quantities, mark up the structure of sentences in terms of phrases and syntactic dependencies, indicate which noun phrases refer to the same entities, indicate sentiment, extract particular or open-class relations between entity mentions, get the quotes people said, etc.
