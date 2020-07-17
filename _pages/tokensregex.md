@@ -1,7 +1,11 @@
 ---
+layout: page
 title: TokensRegex
 keywords: tokensregex
 permalink: '/tokensregex.html'
+nav_order: 4
+toc: false
+parent: Additional Tools
 ---
 
 StanfordCoreNLP includes [TokensRegex](http://nlp.stanford.edu/software/tokensregex.html), a framework for defining regular expressions over 

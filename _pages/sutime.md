@@ -1,7 +1,11 @@
 ---
+layout: page
 title: SUTime
-keywords: sutime
+keywords: sutime, time expressions, dates
 permalink: '/sutime.html'
+nav_order: 3
+toc: false
+parent: Additional Tools
 ---
 
 StanfordCoreNLP includes [SUTime](https://nlp.stanford.edu/software/sutime.shtml), a library for processing temporal expressions

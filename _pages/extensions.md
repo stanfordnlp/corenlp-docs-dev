@@ -1,7 +1,11 @@
 ---
-title: Extensions &ndash; Packages and models by others extending Stanford CoreNLP
+layout: page
+title: Extensions and Packages and Models by others extending CoreNLP
 keywords: extensions
 permalink: '/extensions.html'
+nav_order: 2
+toc: false
+parent: Additional Tools
 ---
 
 #### Annotators/models
