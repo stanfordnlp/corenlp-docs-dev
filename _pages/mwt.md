@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Multi-Word Token (MWT) Expansion
-keywords: mwt, multi-word token expansion, MWTProcessor
+title: Multi Word Token Expansion
+keywords: mwt, MWTAnnotator 
 permalink: '/mwt.html'
 nav_order: 6
 parent: Pipeline
@@ -9,82 +9,91 @@ parent: Pipeline
 
 ## Description
 
-The Multi-Word Token (MWT) expansion module can expand a raw token into multiple [syntactic words](https://universaldependencies.org/u/overview/tokenization.html), which makes it easier to carry out Universal Dependencies analysis in some languages. This was handled by the `MWTProcessor` in Stanza, and can be invoked with the name `mwt`. The token upon which an expansion will be performed is predicted by the `TokenizeProcessor`, before the invocation of the `MWTProcessor`.
+Multi Word Token Expansion is the process of splitting tokens into syntactic words which are used by downstream tasks such as part of speech tagging
+and dependency parsing. In CoreNLP, MWT expansion is only performed for French, German, and Spanish.
 
-For more details on why MWT is necessary for Universal Dependencies analysis, please visit the [UD tokenization page](https://universaldependencies.org/u/overview/tokenization.html).
+Each language has different rules for MWT expansion. For instance consider the Spanish sentence `Pude haber querido escribirlo.`. This sentence
+contains an example of an enclitic pronoun, which is split off from the verb by MWT expansion. So `escribirlo` is split into `escribir` and `lo`.
 
-{% include alerts.html %}
-{{ note }}
-Only languages with <a href='https://universaldependencies.org/u/overview/tokenization.html'>multi-word tokens (MWT)</a>, such as German or French, require MWTProcessor; other languages, such as English or Chinese, do not support this processor in the pipeline.
-{{ end }}
+Some MWT split decisions are made by a deterministic dictionary, while others are made by a statistical model.
 
 | Name | Annotator class name | Requirement | Generated Annotation | Description |
 | --- | --- | --- | --- | --- |
-| mwt | MWTProcessor | tokenize | Expands multi-word tokens (MWTs) into multiple words when they are predicted by the tokenizer. Each [`Token`](data_objects.md#token) will correspond to one or more [`Word`](data_objects.md#word)s after tokenization and MWT expansion. | Expands [multi-word tokens (MWT)](https://universaldependencies.org/u/overview/tokenization.html) predicted by the [TokenizeProcessor](tokenize.md). This is only applicable to some languages. |
+| mwt | MWTAnnotator | TokensAnnotation, SentencesAnnotation | - | Splits multi word tokens according to UD 2.0 standard. |
 
 ## Options
 
 | Option name | Type | Default | Description |
 | --- | --- | --- | --- |
-| mwt_batch_size | int | 50 | When annotating, this argument specifies the maximum number of words to process as a minibatch for efficient processing. <br>**Caveat**: the larger this number is, the more working memory is required (main RAM or GPU RAM, depending on the computating device). |
+| mwt.mappingFile | String | - | Mapping file containing dictionary for splitting MWT tokens (e.g. "escribirlo -> escribir + lo"). The format of the mapping file must be 2 tab delimited columns. The first column is the original word (e.g. "escribirlo"), and the second column should be a comma separated list of multi word tokens (e.g. "escribir,lo") for the original token. An example of such a file is `edu/stanford/nlp/models/mwt/spanish/spanish-mwt.tsv` located in the Spanish models jar. |
+| mwt.pos.model | String | - | Part of speech tag model to use for MWT expansion. This is a special part of speech tag model exclusively used for MWT expansion, and its tags will not be used after MWT expansion is completed. For example, French uses the special MWT pos model `edu/stanford/nlp/models/mwt/french/french-mwt.tagger` as part of the decision process for splitting the word "des". The model should apply special part of speech tags to words that should be split, while the corresponding statisticalMappingFile will designate what to do in the event of a split decision. For instance, the French tagging model tags instances of the word "des" that should be split with the tag "ADP_DET". The corresponding French statisticalMappingFile designates what to do when tag is seen with the word "des". This model will provide tags that the statisticalMappingFile will use. |
+| mwt.statisticalMappingFile | String | - | Mapping file for statistical MWT decisions. The format is 2 tab separated columns. The first column is of the form `word-tag` representing word tag pairs that should be split (e.g. "des-ADP_DET"). The second column should be a comma separated list of MWT tokens (e.g. "de,les"). An example of this file for French is `edu/stanford/nlp/models/mwt/french/french-mwt-statistical.tsv`. |
 
-## Example Usage
+## Statistical Multi Word Expansion
 
-The [MWTProcessor](mwt.md) processor only requires [TokenizeProcessor](tokenize.md) to be run before it. After these two processors have processed the text, the [`Sentence`](data_objects.md#sentence)s will have lists of [`Token`](data_objects.md#token)s and corresponding syntactic [`Word`](data_objects.md#word)s based on the multi-word-token expander model.  The list of tokens for a sentence `sent` can be accessed with `sent.tokens`, and its list of words with `sent.words`. Similarly, the list of words for a token `token` can be accessed with `token.words`.
+In French, the word "des" is only split in certain circumstances. Thus, a statistical model is needed to make decisions on when to split "des" into "de" and "les".
+First a part of speech tag model for MWT expansion is applied (`mwt.pos.model`). This model applies special tags to words that should be split. For French, it applies
+the tag "ADP_DET" to the word "des" in cases where "des" should be split. A corresponding dictionary is provided via `mwt.statisticalMappingFile` which maps word-tag
+pairs to splits. In the case of French, "des-ADP_DET" is mapped to "de,les". Mapping files should consist of 2 tab separated columns. The first column contains
+the word and tag (e.g. "des-ADP_DET"), and the second column should consist of a comma separated list of multi word tokens (e.g. "de,les").
 
-### Accessing Syntactic Words for Multi-Word Token
-
-Here is an example of a piece of text in French that requires multi-word token expansion, and how to access the underlying words of these multi-word tokens:
-
-```python
-import stanza
-
-nlp = stanza.Pipeline(lang='fr', processors='tokenize,mwt')
-doc = nlp('Nous avons atteint la fin du sentier.')
-for token in doc.sentences[0].tokens:
-    print(f'token: {token.text}\twords: {", ".join([word.text for word in token.words])}')
-```
-
-As a result of running this code, we see that the word _du_ is expanded into its underlying syntactic words, _de_ and _le_.
+An example of the statistical model file is `edu/stanford/nlp/models/mwt/french/french-mwt-statistical.tsv` in the French models jar.
 
 ```
-token: Nous     words: Nous
-token: avons    words: avons
-token: atteint  words: atteint
-token: la       words: la
-token: fin      words: fin
-token: du       words: de, le
-token: sentier  words: sentier
-token: .        words: .
+des-ADP_DET    de,les
 ```
 
-### Accessing Parent Token for Word
+## Multi Word Token Expansion From The Command Line
 
-When performing word-level annotations and processing, it might sometimes be useful to access the token a given word is derived from, so that we can access its character offsets, among other things, that are associated with the token. Here is an example of how to do that with [`Word`](data_object.md#word)'s `parent` property with the same sentence we just saw:
+This command will take in the text of the file `input.txt` (assumed to be French in this example) and produce a human readable output of the sentences, 
+with MWT expansion applied.
 
-```python
-import stanza
-
-nlp = stanza.Pipeline(lang='fr', processors='tokenize,mwt')
-doc = nlp('Nous avons atteint la fin du sentier.')
-for word in doc.sentences[0].words:
-    print(f'word: {word.text}\tparent token: {word.parent.text}')
+```bash
+java -Xmx5g edu.stanford.nlp.pipeline.StanfordCoreNLP -props french -annotators tokenize,ssplit,mwt -file input.txt
 ```
 
-As one can see in the result below, Words `de` and `le` have the same parent token `du`.
+Other output formats include `conllu`, `conll`, `json`, and `serialized`.
+
+## Sentence Splitting From Java
+
+```java
+package edu.stanford.nlp.examples;
+
+import edu.stanford.nlp.ling.*;
+import edu.stanford.nlp.pipeline.*;
+import edu.stanford.nlp.util.StringUtils;
+
+import java.util.*;
+
+public class MWTExpansionExample {
+
+  public static String text = "Pude haber querido escribirlo.";
+
+  public static void main(String[] args) {
+    // set the list of annotators to run
+    Properties props = StringUtils.argsToProperties("-props", "spanish");
+    props.setProperty("annotators", "tokenize,ssplit,mwt");
+    // build pipeline
+    StanfordCoreNLP pipeline = new StanfordCoreNLP(props);
+    // create a document object
+    CoreDocument doc = new CoreDocument(text);
+    // annotate
+    pipeline.annotate(doc);
+    // display tokens
+    for (CoreLabel tok : doc.tokens()) {
+      System.out.println(String.format("%s", tok.word()));
+    }
+  }
+}
+```
+
+This demo code will produce this output, which shows the enclitic pronoun being split from the verb:
 
 ```
-word: Nous      parent token: Nous
-word: avons     parent token: avons
-word: atteint   parent token: atteint
-word: la        parent token: la
-word: fin       parent token: fin
-word: de        parent token: du
-word: le        parent token: du
-word: sentier   parent token: sentier
-word: .         parent token: .
+Pude
+haber
+querido
+escribir
+lo
+.
 ```
-
-## Training-Only Options
-
-Most training-only options are documented in the [argument parser](https://github.com/stanfordnlp/stanza/blob/master/stanza/models/mwt_expander.py#L22) of the MWT expander.
