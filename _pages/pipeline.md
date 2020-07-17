@@ -14,7 +14,7 @@ The centerpiece of CoreNLP is the pipeline. Pipelines take in text or xml and ge
 Pipelines are constructed with Properties objects which provide specifications for what annotators to run and
 how to customize the annotators.
 
-# Running A Pipeline From The Command Line
+## Running A Pipeline From The Command Line
 
 You can immediately run a pipeline by issuing the following command:
 
@@ -60,7 +60,7 @@ If you want to run a non-English language pipeline, you can just specify the nam
 java -Xmx5g edu.stanford.nlp.pipeline.StanfordCoreNLP -props french -input french-input.txt
 ```
 
-# Running A Pipeline In Java Code
+## Running A Pipeline In Java Code
 
 Here is a basic demo class showing how to run a pipeline in Java code:
 
