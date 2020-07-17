@@ -3,7 +3,7 @@ layout: page
 title: Lemmatization
 keywords: lemma, MorphaAnnotator 
 permalink: '/lemma.html'
-nav_order: 8
+nav_order: 9
 parent: Pipeline
 ---
 

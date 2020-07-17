@@ -3,7 +3,7 @@ layout: page
 title: Parts Of Speech
 keywords: pos, POSTaggerAnnotator 
 permalink: '/pos.html'
-nav_order: 7
+nav_order: 8
 parent: Pipeline
 ---
 

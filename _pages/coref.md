@@ -3,7 +3,7 @@ layout: page
 title: Coreference Resolution
 keywords: coref, CorefAnnotator, coreference
 permalink: '/coref.html'
-nav_order: 12
+nav_order: 13
 parent: Pipeline
 ---
 

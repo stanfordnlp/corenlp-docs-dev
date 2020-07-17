@@ -3,7 +3,7 @@ layout: page
 title: Sentence Splitting
 keywords: ssplit, WordToSentencesAnnotator 
 permalink: '/ssplit.html'
-nav_order: 5
+nav_order: 6
 parent: Pipeline
 ---
 
