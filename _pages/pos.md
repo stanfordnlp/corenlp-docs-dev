@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Parts Of Speech
-keywords: pos, POSAnnotator 
+keywords: pos, POSTaggerAnnotator 
 permalink: '/pos.html'
 nav_order: 7
 parent: Pipeline
