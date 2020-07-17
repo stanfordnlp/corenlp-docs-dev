@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Dependency Parsing
+title: Constituency Parsing
 keywords: parse, ParserAnnotator, constituency parsing
 permalink: '/parse.html'
 nav_order: 11
