@@ -39,7 +39,7 @@ entries:
     - title : Pipeline
 
       items:
-        - title: Pipeline and Processors
+        - title: Pipeline
           url: pipeline.html
 
         - title: Data Objects and Annotations
