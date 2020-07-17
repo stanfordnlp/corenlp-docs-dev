@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Tokenization
+title: Sentence Splitting
 keywords: ssplit, WordToSentencesAnnotator 
 permalink: '/ssplit.html'
 nav_order: 4
