@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Stanford CoreNLP Client
+title: Server
 keywords: Stanza, Stanford CoreNLP, Client, Server, Python
 permalink: '/corenlp_client.html'
 nav_order: 5

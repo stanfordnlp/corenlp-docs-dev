@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Neural Pipeline
+title: Pipeline
 keywords: pipeline
 permalink: '/neural_pipeline.html'
 nav_order: 3
