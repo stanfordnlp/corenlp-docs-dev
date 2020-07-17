@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Dependency Parsing
-keywords: depparse, DepparseProcessor, dependency parsing
+keywords: depparse, DependencyParseAnnotator, dependency parsing
 permalink: '/depparse.html'
 nav_order: 10
 parent: Pipeline
@@ -9,67 +9,37 @@ parent: Pipeline
 
 ## Description
 
-The dependency parsing module builds a tree structure of words from the input sentence, which represents the syntactic dependency relations between words. The resulting tree representations, which follow the [Universal Dependencies formalism](https://universaldependencies.org/), are useful in many downstream applications. In Stanza, dependency parsing is performed by the `DepparseProcessor`, and can be invoked with the name `depparse`.
+Provides a fast syntactic dependency parser. We generate three dependency-based outputs, as follows: basic, uncollapsed dependencies, saved in BasicDependenciesAnnotation; enhanced dependencies saved in EnhancedDependenciesAnnotation; and enhanced++ dependencies in EnhancedPlusPlusDependenciesAnnotation. Most users of our parser will prefer the latter representation.
 
-| Name | Annotator class name | Requirement | Generated Annotation | Description |
-| --- | --- | --- | --- | --- |
-| depparse | DepparseProcessor | tokenize, mwt, pos, lemma | Determines the syntactic head of each word in a sentence and the dependency relation between the two words that are accessible through [`Word`](data_objects.md#word)'s `head` and `deprel` attributes. | Provides an accurate syntactic dependency parsing analysis. |
+This is a separate annotator for a direct dependency parser. These
+parsers require prior part-of-speech tagging. If you need constituency
+parses then you should look at the `parse` annotator.
+
+| Property name | Annotator class name | Generated Annotation |
+| --- | --- | --- |
+| depparse | DependencyParseAnnotator | BasicDependenciesAnnotation, EnhancedDependenciesAnnotation, EnhancedPlusPlusDependenciesAnnotation |
 
 ## Options
 
 | Option name | Type | Default | Description |
 | --- | --- | --- | --- |
-| depparse_batch_size | int | 5000 | When annotating, this argument specifies the maximum number of words to process as a minibatch for efficient processing. <br>**Caveat**: the larger this number is, the more working memory is required (main RAM or GPU RAM, depending on the computating device). This parameter should be set larger than the number of words in the longest sentence in your input document, or you might run into unexpected behaviors. |
-| depparse_pretagged | bool | False | Assume the document is tokenized and pretagged. Only run dependency parsing on the document. |
+| depparse.model | file, classpath, or URL | edu/stanford/nlp/models/parser/nndep/english\_UD.gz | Dependency parsing model to use. There is no need to explicitly set this option, unless you want to use a different parsing model than the default. By default, this is set to the UD parsing model included in the stanford-corenlp-models JAR file. |
 
-## Example Usage
 
-Running the [DepparseProcessor](depparse.md) requires the [TokenizeProcessor](tokenize.md), [MWTProcessor](mwt.md), [POSProcessor](pos.md), and [LemmaProcessor](lemma.md).
-After all these processors have been run, each [`Sentence`](data_objects.md#sentence) in the output would have been parsed into Universal Dependencies (version 2) structure, where the head index of each [`Word`](data_objects.md#word) can be accessed by the property `head`, and the dependency relation between the words `deprel`. Note that the head index starts at 1 for actual words, and is 0 only when the word itself is the root of the tree. This index should be offset by 1 when looking for the govenor word in the sentence.
+## Training a model
 
-### Accessing Syntactic Dependency Information
+Here is an example command for training your own model.  In this example we will train a French dependency parser.
 
-Here is an example of parsing a sentence and accessing syntactic parse information from each word:
-
-```python
-import stanza
-
-nlp = stanza.Pipeline(lang='fr', processors='tokenize,mwt,pos,lemma,depparse')
-doc = nlp('Nous avons atteint la fin du sentier.')
-print(*[f'id: {word.id}\tword: {word.text}\thead id: {word.head}\thead: {sent.words[word.head-1].text if word.head > 0 else "root"}\tdeprel: {word.deprel}' for sent in doc.sentences for word in sent.words], sep='\n')
+```bash
+java -Xmx12g edu.stanford.nlp.parser.nndep.DependencyParser -trainFile fr-ud-train.conllu -devFile fr-ud-dev.conllu -model new-french-UD-model.txt.gz -embedFile wiki.fr.vec -embeddingSize 300 -tlp edu.stanford.nlp.trees.international.french.FrenchTreebankLanguagePack -cPOS
 ```
 
-As can be seen in the output, the syntactic head of the word _Nous_ is _atteint_, and the dependency relation between the two words is  `nsubj` (_Nous_ is a nominal subject for _atteint_).
+* UD train/dev/test data for a variety of languages can be found [here](http://universaldependencies.org/)
+* There are many places to find word embedding data, in this example Facebook fastText embeddings are being used, they are found [here](https://github.com/facebookresearch/fastText/blob/master/pretrained-vectors.md)
+* Note that you need a tokenizer for your language that matches the tokenization of the UD training files, you may have to reprocess the files to match the tokenizing you plan to use
+* Likewise, if you use the `-cPOS` setting, you will have to have POS tags that match the UD training data
+* The amount of RAM necessary to train the model may vary depending on various factors
 
-```
-id: 1   word: Nous      head id: 3      head: atteint   deprel: nsubj
-id: 2   word: avons     head id: 3      head: atteint   deprel: aux:tense
-id: 3   word: atteint   head id: 0      head: root      deprel: root
-id: 4   word: la        head id: 5      head: fin       deprel: det
-id: 5   word: fin       head id: 3      head: atteint   deprel: obj
-id: 6   word: de        head id: 8      head: sentier   deprel: case
-id: 7   word: le        head id: 8      head: sentier   deprel: det
-id: 8   word: sentier   head id: 5      head: fin       deprel: nmod
-id: 9   word: .         head id: 3      head: atteint   deprel: punct
-```
+## More information 
 
-
-### Start with Pretagged Document
-
-Normally, the `depparse` processor depends on `tokenize`, `mwt`, `pos`, and `lemma` processors. However, in cases you wish to use your own tokenization, multi-word token expansion, POS tagging and lemmatization, you can skip the restriction and pass the pretagged document (with upos, xpos, feats, lemma) by setting `depparse_pretagged` to `True`.
-
-Here is an example of dependency parsing with pretokenized and pretagged document:
-
-```python
-import stanza
-from stanza.models.common.doc import Document
-
-nlp = stanza.Pipeline(lang='en', processors='depparse', depparse_pretagged=True)
-pretagged_doc = Document([[{'id': '1', 'text': 'Test', 'lemma': 'Test', 'upos': 'NOUN', 'xpos': 'NN', 'feats': 'Number=Sing'}, {'id': '2', 'text': 'sentence', 'lemma': 'sentence', 'upos': 'NOUN', 'xpos': 'NN', 'feats': 'Number=Sing'}, {'id': '3', 'text': '.', 'lemma': '.', 'upos': 'PUNCT', 'xpos': '.'}]])
-doc = nlp(pretagged_doc)
-```
-
-## Training-Only Options
-
-Most training-only options are documented in the [argument parser](https://github.com/stanfordnlp/stanza/blob/master/stanza/models/parser.py#L21) of the dependency parser.
-
+For details about the dependency software, see [this page](http://nlp.stanford.edu/software/nndep.html). For more details about dependency parsing in general, see [this page](http://nlp.stanford.edu/software/stanford-dependencies.html).
