@@ -3,7 +3,7 @@ layout: page
 title: Dependency Parsing
 keywords: depparse, DepparseProcessor, dependency parsing
 permalink: '/depparse.html'
-nav_order: 9
+nav_order: 10
 parent: Pipeline
 ---
 
