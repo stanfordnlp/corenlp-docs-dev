@@ -69,6 +69,7 @@ export CLASSPATH=$CLASSPATH:/path/to/stanford-corenlp-4.0.0/*:
 ```
 
 * You're ready to go! There are many ways to run a CoreNLP pipeline. For instance here's how to run a pipeline on a text file.
+The output will be available in a file called `input.txt.out`.
 
 ```bash
 java -Xmx5g edu.stanford.nlp.pipeline.StanfordCoreNLP -file input.txt
