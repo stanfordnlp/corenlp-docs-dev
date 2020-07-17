@@ -4,7 +4,7 @@ topnav:
 - title: Topnav
   subcategories:
     - title: Github repo
-      external_url: https://github.com/stanfordnlp/stanza
+      external_url: https://github.com/stanfordnlp/CoreNLP
       icon: fab fa-github
 
 #Topnav dropdowns
