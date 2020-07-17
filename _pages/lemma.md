@@ -4,7 +4,7 @@ title: Lemmatization
 keywords: lemma, lemmatization, LemmaProcessor
 permalink: '/lemma.html'
 nav_order: 7
-parent: Neural Pipeline
+parent: Pipeline
 ---
 
 ## Description

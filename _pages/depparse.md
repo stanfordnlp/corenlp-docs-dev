@@ -4,7 +4,7 @@ title: Dependency Parsing
 keywords: depparse, DepparseProcessor, dependency parsing
 permalink: '/depparse.html'
 nav_order: 8
-parent: Neural Pipeline
+parent: Pipeline
 ---
 
 ## Description

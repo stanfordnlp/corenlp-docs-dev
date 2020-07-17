@@ -4,7 +4,7 @@ title: Part-of-Speech & Morphological Features
 keywords: POS, part-of-speech, morphological features, POSProcessor
 permalink: '/pos.html'
 nav_order: 6
-parent: Neural Pipeline
+parent: Pipeline
 ---
 
 ## Description

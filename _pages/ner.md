@@ -4,7 +4,7 @@ title: Named Entity Recognition
 keywords: ner, named entity recognition, NERProcessor
 permalink: '/ner.html'
 nav_order: 9
-parent: Neural Pipeline
+parent: Pipeline
 ---
 
 ## Description

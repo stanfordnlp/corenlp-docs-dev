@@ -4,7 +4,7 @@ title: Tokenization & Sentence Segmentation
 keywords: tokenize, TokenizeProcessor, tokenization, sentence segmentation
 permalink: '/tokenize.html'
 nav_order: 4
-parent: Neural Pipeline
+parent: Pipeline
 ---
 
 ## Description
