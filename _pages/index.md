@@ -74,4 +74,78 @@ The output will be available in a file called `input.txt.out`.
 ```bash
 java -Xmx5g edu.stanford.nlp.pipeline.StanfordCoreNLP -file input.txt
 ```
+## Human languages supported
 
+The basic distribution provides model files for the analysis of well-edited **English**,
+but the engine is compatible with models for other languages. In the
+table above, we provide packaged models for
+**Arabic**, **Chinese**, **French**, **German**, and **Spanish**.
+We also provide two jars that contain all of our
+English models, which include various variant models, and in particular models
+optimized for working with uncased English (e.g., mostly or all
+either uppercase or lowercase).
+There is also some third party support for additional languages (and
+we would welcome more!). You can find out more about using CoreNLP with
+various human languages on the
+[other human languages](human-languages.html) page.
+
+
+## Programming languages and operating systems
+
+Stanford CoreNLP is written in **Java**; recent releases  require
+**Java 1.8+**. You need to have Java installed to run
+CoreNLP. However, you can interact with CoreNLP via the command-line
+or its web service;
+many people use CoreNLP while writing their own code in Javascript,
+Python, or some other language.
+
+You can use Stanford CoreNLP from the [command-line](cmdline.html),
+via its original Java
+[programmatic API](api.html), via the object-oriented [simple API](https://stanfordnlp.github.io/CoreNLP/simple.html),
+via [third party APIs](other-languages.html) for most major modern
+programming languages, or via a [web service](corenlp-server.html).
+It works on Linux, macOS, and Windows.
+
+## License
+
+The full Stanford CoreNLP is licensed under the [GNU General Public License](http://www.gnu.org/licenses/gpl.html)
+v3 or later. More precisely, all the Stanford NLP
+code is GPL v2+, but CoreNLP uses some Apache-licensed libraries,
+and so our understanding is that the the composite is correctly
+licensed as v3+. You can run almost all of CoreNLP under GPL v2; you
+simply need to omit the time-related libraries, and then you lose the
+functionality of SUTime.
+Note that the license is the <i>full</i> GPL,
+which allows many free uses, but not its use in 
+[proprietary software](http://www.gnu.org/licenses/gpl-faq.html#GPLInProprietarySystem) 
+which is distributed to others.
+For distributors of
+[proprietary software](http://www.gnu.org/licenses/gpl-faq.html#GPLInProprietarySystem),
+CoreNLP is also available from Stanford under a
+[commercial licensing](http://techfinder.stanford.edu/technology_detail.php?ID=29724)
+You can contact us at
+[java-nlp-support@lists.stanford.edu](mailto:java-nlp-support@lists.stanford.edu).
+If you don't need a commercial license, but would like to support
+maintenance of these tools, we welcome gift funding:
+use [this form](http://giving.stanford.edu/goto/writeingift)
+and write "Stanford NLP Group open source software" in the Special Instructions.
+
+
+## Citing Stanford CoreNLP in papers
+
+If you&rsquo;re just running the CoreNLP pipeline, please cite this CoreNLP paper:
+
+> Manning, Christopher D., Mihai Surdeanu, John Bauer, Jenny Finkel, Steven J. Bethard, and David McClosky. 2014. [The Stanford CoreNLP Natural Language Processing Toolkit](http://nlp.stanford.edu/pubs/StanfordCoreNlp2014.pdf) In *Proceedings of the 52nd Annual Meeting of the Association for Computational Linguistics: System Demonstrations*, pp. 55-60. \[[pdf](http://nlp.stanford.edu/pubs/StanfordCoreNlp2014.pdf)\] \[[bib](http://nlp.stanford.edu/pubs/StanfordCoreNlp2014.bib)\]
+
+If you&rsquo;re dealing in depth with particular annotators,
+you&rsquo;re also encouraged to cite the papers that cover individual
+components:
+[POS tagging](http://nlp.stanford.edu/software/tagger.html),
+[NER](http://nlp.stanford.edu/software/CRF-NER.html),
+[constituency parsing](http://nlp.stanford.edu/software/lex-parser.html),
+[dependency parsing](http://nlp.stanford.edu/software/nndep.html),
+[coreference resolution](http://nlp.stanford.edu/software/dcoref.html),
+[sentiment](http://nlp.stanford.edu/sentiment/), or [Open IE](http://nlp.stanford.edu/software/openie.html).
+You can find more information on the Stanford NLP
+[software pages](http://nlp.stanford.edu/software/) and/or
+[publications page](http://nlp.stanford.edu/pubs/).
