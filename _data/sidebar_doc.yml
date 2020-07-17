@@ -56,12 +56,16 @@ entries:
 
         - title: Lemmatization
           url: lemma.html
+        
+        - title: Named Entity Recognition
+          url: ner.html
 
         - title: Dependency Parsing
           url: depparse.html
 
-        - title: Named Entity Recognition
-          url: ner.html
+        - title: Constituency Parsing
+          url: parse.html
+
 
     - title: Server
         
