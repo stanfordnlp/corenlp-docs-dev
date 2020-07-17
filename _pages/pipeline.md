@@ -55,13 +55,13 @@ This will store JSON output in the file `input.txt.json`.
 Of course all of those properties could be specified at the command line as well:
 
 ```bash
-java -Xmx5g edu.stanford.nlp.pipeline.StanfordCoreNLP -annotators tokenize,ssplit,pos -pos.model edu/stanford/nlp/models/pos-tagger/english-bidirectional-distsim.tagger -outputFormat json -input input.txt
+java -Xmx5g edu.stanford.nlp.pipeline.StanfordCoreNLP -annotators tokenize,ssplit,pos -pos.model edu/stanford/nlp/models/pos-tagger/english-bidirectional-distsim.tagger -outputFormat json -file input.txt
 ```
 
 If you want to run a non-English language pipeline, you can just specify the name of one of the CoreNLP supported languages:
 
 ```bash
-java -Xmx5g edu.stanford.nlp.pipeline.StanfordCoreNLP -props french -input french-input.txt
+java -Xmx5g edu.stanford.nlp.pipeline.StanfordCoreNLP -props french -file french-input.txt
 ```
 
 ## Running A Pipeline In Java Code
