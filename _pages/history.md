@@ -3,7 +3,7 @@ layout: page
 title: Release History
 keywords: history
 permalink: '/history.html'
-nav_order: 1
+nav_order: 5
 toc: false
 parent: Resources
 ---
