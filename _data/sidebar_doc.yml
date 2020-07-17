@@ -42,28 +42,22 @@ entries:
         - title: Pipeline
           url: pipeline.html
 
-        - title: Data Objects and Annotations
-          url: data_objects.html
-
-        - title: Data Conversion
-          url: data_conversion.html
-
-        - title: TokenizeProcessor
+        - title: Tokenization
           url: tokenize.html
 
-        - title: MWTProcessor
+        - title: Multi Word Tokenization
           url: mwt.html
         
-        - title: POSProcessor
+        - title: Parts Of Speech
           url: pos.html
 
-        - title: LemmaProcessor
+        - title: Lemmatization
           url: lemma.html
 
-        - title: DepparseProcessor
+        - title: Dependency Parsing
           url: depparse.html
 
-        - title: NERProcessor
+        - title: Named Entity Recognition
           url: ner.html
 
     - title: Server
