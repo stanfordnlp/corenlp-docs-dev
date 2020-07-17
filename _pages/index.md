@@ -46,7 +46,7 @@ to a Google Protocol Buffer.
 
 1. Download and unzip [CoreNLP 4.0.0](http://nlp.stanford.edu/software/stanford-corenlp-latest.zip)
 
-2. Download model jars for the language you want to work on and move the jars to the distribution directory.
+1. Download model jars for the language you want to work on and move the jars to the distribution directory.
 
 | Language | model jar | version |
 | :------- | :-------- | | :----- |
@@ -62,13 +62,13 @@ to a Google Protocol Buffer.
 mv /path/to/stanford-corenlp-4.0.0-models-french.jar /path/to/stanford-corenlp-4.0.0
 ```
 
-3. Include the distribution directory in your CLASSPATH.
+1. Include the distribution directory in your CLASSPATH.
 
 ```bash
 export CLASSPATH=$CLASSPATH:/path/to/stanford-corenlp-4.0.0/*:
 ```
 
-4. You're ready to go! There are many ways to run a CoreNLP pipeline. For instance here's how to run a pipeline on a text file.
+1. You're ready to go! There are many ways to run a CoreNLP pipeline. For instance here's how to run a pipeline on a text file.
 
 ```bash
 java -Xmx5g edu.stanford.nlp.pipeline.StanfordCoreNLP -file input.txt
