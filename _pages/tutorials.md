@@ -3,7 +3,7 @@ layout: page
 title: Tutorials
 keywords: tutorials
 permalink: '/tutorials.html'
-nav_order: 2
+nav_order: 3
 toc: false
 parent: Resources
 ---

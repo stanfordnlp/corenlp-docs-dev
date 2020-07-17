@@ -3,7 +3,7 @@ layout: page
 title: Understanding memory and time usage
 keywords: memory, speed, time
 permalink: '/memory-time.html'
-nav_order: 3
+nav_order: 4
 toc: false
 parent: Resources
 ---

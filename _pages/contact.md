@@ -3,7 +3,7 @@ layout: page
 title: Contact
 keywords: contact
 permalink: '/contact.html'
-nav_order: 6
+nav_order: 7
 toc: false
 parent: Resources
 ---

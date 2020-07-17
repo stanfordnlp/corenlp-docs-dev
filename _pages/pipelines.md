@@ -3,7 +3,7 @@ layout: page
 title: CoreNLP Pipelines
 keywords: pipeline, annotator
 permalink: '/pipelines.html'
-nav_order: 4
+nav_order: 5
 toc: false
 parent: Resources
 ---

@@ -3,7 +3,7 @@ layout: page
 title: FAQ
 keywords: faq
 permalink: '/faq.html'
-nav_order: 1
+nav_order: 2
 toc: false
 parent: Resources
 ---
