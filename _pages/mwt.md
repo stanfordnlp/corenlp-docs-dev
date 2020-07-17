@@ -3,7 +3,7 @@ layout: page
 title: Multi-Word Token (MWT) Expansion
 keywords: mwt, multi-word token expansion, MWTProcessor
 permalink: '/mwt.html'
-nav_order: 5
+nav_order: 6
 parent: Pipeline
 ---
 

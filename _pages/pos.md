@@ -3,7 +3,7 @@ layout: page
 title: Part Of Speech
 keywords: POS, part-of-speech, morphological features, POSProcessor
 permalink: '/pos.html'
-nav_order: 6
+nav_order: 7
 parent: Pipeline
 ---
 

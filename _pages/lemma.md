@@ -3,7 +3,7 @@ layout: page
 title: Lemmatization
 keywords: lemma, lemmatization, LemmaProcessor
 permalink: '/lemma.html'
-nav_order: 7
+nav_order: 8
 parent: Pipeline
 ---
 
