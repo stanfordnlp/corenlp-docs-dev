@@ -21,4 +21,4 @@ parts of speech, named entities, numeric and time values, dependency and constit
 
 ## Quickstart
 
-[<i class="fab fa-java"></i> Download CoreNLP 4.0.0](http://nlp.stanford.edu/software/stanford-corenlp-latest.zip){: .btn .mr-2}
+[<i class="fab fa-java"></i> Download CoreNLP 4.0.0](http://nlp.stanford.edu/software/stanford-corenlp-latest.zip){: .btn .fs-5 .mr-2 .mb-md-0 }
