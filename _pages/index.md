@@ -47,6 +47,12 @@ to a Google Protocol Buffer.
 
 CoreNLP generates a variety of linguistic annotations, including:
 
+#### Parts Of Speech
+
+<p align="center">
+  <img src="assets/images/pos.png">
+</p> 
+
 #### Named Entities
 
 <p align="center">
