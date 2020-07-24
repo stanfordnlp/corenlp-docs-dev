@@ -43,6 +43,16 @@ to a Google Protocol Buffer.
   <img src="assets/images/text-to-annotation.png">
 </p> 
 
+### Annotations
+
+CoreNLP generates a variety of linguistic annotations, including:
+
+#### Dependency Parses
+
+<p align="center">
+  <img src="assets/images/depparse.png">
+</p> 
+
 ## Quickstart
 
 * Download and unzip [CoreNLP 4.0.0](http://nlp.stanford.edu/software/stanford-corenlp-latest.zip)
