@@ -103,22 +103,6 @@ The output will be available in a file called `input.txt.out`.
 ```bash
 java -Xmx5g edu.stanford.nlp.pipeline.StanfordCoreNLP -file input.txt
 ```
-## Human languages supported
-
-The basic distribution provides model files for the analysis of well-edited **English**,
-but the engine is compatible with models for other languages. In the
-table above, we provide packaged models for
-**Arabic**, **Chinese**, **French**, **German**, and **Spanish**.
-We also provide two jars that contain all of our
-English models, which include various variant models, and in particular models
-optimized for working with uncased English (e.g., mostly or all
-either uppercase or lowercase).
-There is also some third party support for additional languages (and
-we would welcome more!). You can find out more about using CoreNLP with
-various human languages on the
-[other human languages](human-languages.html) page.
-
-
 ## Programming languages and operating systems
 
 Stanford CoreNLP is written in **Java**; recent releases  require
