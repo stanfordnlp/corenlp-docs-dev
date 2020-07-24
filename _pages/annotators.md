@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Annotators
+title: Full List Of Annotators
 keywords: annotators
 permalink: '/annotators.html'
 nav_order: 4
