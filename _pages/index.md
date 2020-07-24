@@ -47,6 +47,12 @@ to a Google Protocol Buffer.
 
 CoreNLP generates a variety of linguistic annotations, including:
 
+#### Named Entities
+
+<p align="center">
+  <img src="assets/images/ner.png">
+</p> 
+
 #### Dependency Parses
 
 <p align="center">
