@@ -3,7 +3,7 @@ layout: page
 title: Sentiment
 keywords: sentiment
 permalink: '/sentiment.html'
-nav_order: 16
+nav_order: 19
 parent: Pipeline
 ---
 

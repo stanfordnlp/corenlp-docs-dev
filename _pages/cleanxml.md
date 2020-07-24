@@ -3,7 +3,7 @@ layout: page
 title: CleanXML
 keywords: cleanxml, CleanXmlAnnotator, xml cleaning
 permalink: '/cleanxml.html'
-nav_order: 5
+nav_order: 6
 parent: Pipeline
 ---
 

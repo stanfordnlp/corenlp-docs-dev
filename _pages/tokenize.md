@@ -3,7 +3,7 @@ layout: page
 title: Tokenization
 keywords: tokenize, TokenizerAnnotator, tokenization
 permalink: '/tokenize.html'
-nav_order: 4
+nav_order: 5
 parent: Pipeline
 ---
 

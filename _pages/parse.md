@@ -3,7 +3,7 @@ layout: page
 title: Constituency Parsing
 keywords: parse, ParserAnnotator, constituency parsing
 permalink: '/parse.html'
-nav_order: 12
+nav_order: 13
 parent: Pipeline
 ---
 

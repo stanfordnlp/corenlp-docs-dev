@@ -3,7 +3,7 @@ layout: page
 title: Named Entity Recognition
 keywords: ner, named entity recognition, NERCombinerAnnotator
 permalink: '/ner.html'
-nav_order: 10
+nav_order: 11
 parent: Pipeline
 ---
 

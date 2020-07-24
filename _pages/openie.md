@@ -3,7 +3,7 @@ layout: page
 title: OpenIE
 keywords: openie, OpenIE
 permalink: '/openie.html'
-nav_order: 14
+nav_order: 15
 parent: Pipeline
 ---
 

@@ -3,7 +3,7 @@ layout: page
 title: KBP
 keywords: kbp, KBP
 permalink: '/kbp.html'
-nav_order: 15
+nav_order: 16
 parent: Pipeline
 ---
 
