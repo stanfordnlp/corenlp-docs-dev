@@ -65,6 +65,12 @@ CoreNLP generates a variety of linguistic annotations, including:
   <img src="assets/images/depparse.png">
 </p> 
 
+#### Coreference
+
+<p align="center">
+  <img src="assets/images/coref.png">
+</p> 
+
 ## Quickstart
 
 * Download and unzip [CoreNLP 4.0.0](http://nlp.stanford.edu/software/stanford-corenlp-latest.zip)
