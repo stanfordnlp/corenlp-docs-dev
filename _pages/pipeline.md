@@ -3,7 +3,7 @@ layout: page
 title: Pipeline
 keywords: pipeline
 permalink: '/pipeline.html'
-nav_order: 3
+nav_order: 4
 has_children: true
 ---
 
