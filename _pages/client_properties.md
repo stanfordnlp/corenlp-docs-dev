@@ -220,7 +220,7 @@ This will initialize a `CoreNLPClient` object with the default set of French mod
 {{ "Currently CoreNLP only provides official support for 6 human languages. For a full list of languages and models available, please see [the CoreNLP website](https://stanfordnlp.github.io/CoreNLP/index.html#human-languages-supported)." | markdownify }}
 {{ end }}
 
-### Using a CoreNLP server on a remote machine
+## Using a CoreNLP server on a remote machine
 
 With the endpoint option, you can even connect to a remote CoreNLP server running in a different machine:
 ```python
