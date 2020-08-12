@@ -156,6 +156,12 @@ with CoreNLPClient(
     memory='8G',
     be_quiet=False) as client:
 ```
+{% include alerts.html %}
+{{ note }}
+{{ "The be_quiet option is set to False by default! It is advised to review CoreNLP server logs when starting out to make sure any errors are not happening on the server side of your application. If your application is generally stable, you can set be_quiet=True to stop seeing CoreNLP server log output." | markdownify }}
+{{ end }}
+
+
 
 ## CoreNLP Server Start Options (Advanced)
 
@@ -256,7 +262,7 @@ ann = client.annotate(text, properties='german')
 
 {% include alerts.html %}
 {{ note }}
-{{ A subtle point to note is that when requests are sent with custom properties, those custom properties will overwrite the properties the server was started with, unless a CoreNLP language name is specified, in which case the server start properties will be ignored and the CoreNLP defaults for that language will be written on top of the original CoreNLP defaults. | markdownify }}
+{{ "A subtle point to note is that when requests are sent with custom properties, those custom properties will overwrite the properties the server was started with, unless a CoreNLP language name is specified, in which case the server start properties will be ignored and the CoreNLP defaults for that language will be written on top of the original CoreNLP defaults." | markdownify }}
 {{ end }}
 
 Similarly to `CoreNLPClient` initialization, you can also specify the annotators and output format for CoreNLP for individual annotation requests as:
