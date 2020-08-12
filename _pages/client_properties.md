@@ -113,6 +113,12 @@ with CoreNLPClient(properties='/path/to/server.props') as client:
 ```
 This option allows the finest level of control over what annotators and models are going to be used in the server. For details on how to write a property file, please see the [instructions on configuring CoreNLP property files](https://stanfordnlp.github.io/CoreNLP/cmdline.html#configuring-corenlp-properties).
 
+For convenience one can also specify the list of `annotators` and the desired `output_format` in the `CoreNLPClient` constructor.
+The values for those two arguments will override any additional properties supplied at construction time.
+
+```python
+with CoreNLPClient(properties='french', annotators='tokenize,ssplit,mwt,pos,ner,parse', output_format='json') as client:
+```
 
 ## Switching Language
 
