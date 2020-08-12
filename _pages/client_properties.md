@@ -256,11 +256,7 @@ ann = client.annotate(text, properties='german')
 
 {% include alerts.html %}
 {{ note }}
-{{ A subtle point to note is that when requests are sent with custom properties,
-those custom properties will overwrite the properties the server was started with,
-unless a CoreNLP language name is specified, in which case the server start properties
-will be ignored and the CoreNLP defaults for that language will be written on top
-of the original CoreNLP defaults. | makdownify }}
+{{ A subtle point to note is that when requests are sent with custom properties, those custom properties will overwrite the properties the server was started with, unless a CoreNLP language name is specified, in which case the server start properties will be ignored and the CoreNLP defaults for that language will be written on top of the original CoreNLP defaults. | markdownify }}
 {{ end }}
 
 Similarly to `CoreNLPClient` initialization, you can also specify the annotators and output format for CoreNLP for individual annotation requests as:
