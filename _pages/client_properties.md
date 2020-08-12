@@ -51,7 +51,33 @@ with CoreNLPClient(properties="french") as client:
 ```
 
 When communicating with a CoreNLP server via Stanza, a user can send specific
-properties for one time use with that request. These request
+properties for one time use with that request. These request level properties
+allow for a dynamic NLP application which can apply different pipelines 
+depending on input text.
+
+For instance, one could switch between German and French pipelines:
+
+```python
+french_text = "Emmanuel Macron est le président de la France."
+german_text = "Angela Merkel ist die deutsche Bundeskanzlerin."
+
+with CoreNLPClient() as client:
+    french_ann = client.annotate(french_text, properties="fr")
+    german_ann = client.annotate(german_text, properties="de")
+```
+
+Or move between custom biomedical and financial text processing pipelines:
+
+```python
+BIOMEDICAL_PROPS = {"depparse.model": "/path/to/biomedical-parser.gz"}
+FINANCE_PROPS = {"depparse.model": "/path/to/finance-parser.gz"}
+
+with CoreNLPClient() as client:
+    bio_ann = client.annotate(bio_text, properties=BIOMEDICAL_PROPS)
+    finance_ann = client.annotate(finance_text, properties=FINANCE_PROPS)
+```
+
+
 
 
 ## Switching Language
