@@ -137,9 +137,9 @@ Here we provide a list of commonly-used arguments that you can initialize your `
 | --- | --- | --- | --- |
 | endpoint | str | http://localhost:9000 | The host and port where the CoreNLP server will run on; change this when the default port 9000 is occupied. |
 | classpath | str | None | Classpath to use for CoreNLP.  None means using the classpath as set by the `$CORENLP_HOME` environment variable, "$CLASSPATH" means to use the system CLASSPATH, and otherwise, the given string is used |
-| timeout | int | 15000 | The maximum amount of time, in milliseconds, to wait for an annotation to finish before cancelling it. |
+| timeout | int | 60000 | The maximum amount of time, in milliseconds, to wait for an annotation to finish before cancelling it. |
 | threads | int | 5 | The number of threads to hit the server with. If, for example, the server is running on an 8 core machine, you can specify this to be 8, and the client will allow you to make 8 simultaneous requests to the server. |
-| memory | str | "4G" | This specifies the memory used by the CoreNLP server process. |
+| memory | str | "5G" | This specifies the memory used by the CoreNLP server process. |
 | start_server | stanza.<wbr>server.<wbr>StartServer | FORCE_START | Whether to start the CoreNLP server when initializing the Python `CoreNLPClient` object. By default the CoreNLP server will be started using the provided options. Alternatively, `DONT_START` doesn't start a new CoreNLP server and attempts to connect to an existing server instance at `endpoint`; `TRY_START` tries to start a new server instance at the endpoint provided, but doesn't fail like `FORCE_START` if one is already running there. Note that this Enum is new in Stanza v1.1, and in previous versions it only supports boolean input. |
 | stdout | file | sys.stdout | The standard output used by the CoreNLP server process. |
 | stderr | file | sys.stderr | The standard error used by the CoreNLP server process. |
