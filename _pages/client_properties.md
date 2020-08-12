@@ -114,11 +114,26 @@ with CoreNLPClient(properties='/path/to/server.props') as client:
 This option allows the finest level of control over what annotators and models are going to be used in the server. For details on how to write a property file, please see the [instructions on configuring CoreNLP property files](https://stanfordnlp.github.io/CoreNLP/cmdline.html#configuring-corenlp-properties).
 
 For convenience one can also specify the list of `annotators` and the desired `output_format` in the `CoreNLPClient` constructor.
+
+| Option name | Type | Default | Description |
+| --- | --- | --- | --- |
+| annotators | str | "tokenize,<wbr>ssplit,<wbr>lemma,<wbr>pos,<wbr>ner,<wbr>depparse" | The default list of CoreNLP annotators the server will use |
+| output_format | str | "serialized" | The default output format to use for the server response, unless otherwise specified. If set to be "serialized", the response will be converted to local Python objects (see usage examples [here](client_usage.md)). For a list of all supported output format, see the [CoreNLP output options page](https://stanfordnlp.github.io/CoreNLP/cmdline.html). |
+
 The values for those two arguments will override any additional properties supplied at construction time.
 
 ```python
 with CoreNLPClient(properties='french', annotators='tokenize,ssplit,mwt,pos,ner,parse', output_format='json') as client:
 ```
+
+## CoreNLP Server Start Options (Server)
+
+In addition to customizing the pipeline the server will run, a variety of
+server specific properties can be specified at server construction time.
+
+
+
+
 
 ## Switching Language
 
@@ -185,13 +200,11 @@ Here we provide a list of commonly-used arguments that you can initialize your `
 
 | Option name | Type | Default | Description |
 | --- | --- | --- | --- |
-| annotators | str | "tokenize,<wbr>ssplit,<wbr>lemma,<wbr>pos,<wbr>ner,<wbr>depparse" | The default list of CoreNLP annotators the server will use |
 | properties | - | None | See "Setting Client Properties" section above |
 | endpoint | str | http://localhost:9000 | The host and port where the CoreNLP server will run on; change this when the default port 9000 is occupied. |
 | classpath | str | None | Classpath to use for CoreNLP.  None means using the classpath as set by the `$CORENLP_HOME` environment variable, "$CLASSPATH" means to use the system CLASSPATH, and otherwise, the given string is used |
 | timeout | int | 15000 | The maximum amount of time, in milliseconds, to wait for an annotation to finish before cancelling it. |
 | threads | int | 5 | The number of threads to hit the server with. If, for example, the server is running on an 8 core machine, you can specify this to be 8, and the client will allow you to make 8 simultaneous requests to the server. |
-| output_format | str | "serialized" | The default output format to use for the server response, unless otherwise specified. If set to be "serialized", the response will be converted to local Python objects (see usage examples [here](client_usage.md)). For a list of all supported output format, see the [CoreNLP output options page](https://stanfordnlp.github.io/CoreNLP/cmdline.html). |
 | memory | str | "4G" | This specifies the memory used by the CoreNLP server process. |
 | start_server | stanza.<wbr>server.<wbr>StartServer | FORCE_START | Whether to start the CoreNLP server when initializing the Python `CoreNLPClient` object. By default the CoreNLP server will be started using the provided options. Alternatively, `DONT_START` doesn't start a new CoreNLP server and attempts to connect to an existing server instance at `endpoint`; `TRY_START` tries to start a new server instance at the endpoint provided, but doesn't fail like `FORCE_START` if one is already running there. Note that this Enum is new in Stanza v1.1, and in previous versions it only supports boolean input. |
 | stdout | file | sys.stdout | The standard output used by the CoreNLP server process. |
