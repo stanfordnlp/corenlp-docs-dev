@@ -77,7 +77,41 @@ with CoreNLPClient() as client:
     finance_ann = client.annotate(finance_text, properties=FINANCE_PROPS)
 ```
 
+## CoreNLP Server Start Options (Pipeline)
 
+There are three ways to specify pipeline properties when starting a CoreNLP server:
+
+| Properties Type | Example | Description |
+| --- | --- | --- |
+| Stanford CoreNLP supported language | french | One of {arabic, chinese, english, french, german, spanish} (or the ISO 639-1 code), this will use Stanford CoreNLP defaults for that language |
+| Python dictionary | {'annotators': 'tokenize,ssplit,pos', 'pos.model': '/path/to/custom-model.ser.gz'} | A Python dictionary specifying the properties, the properties will be written to a tmp file |
+| File path | /path/to/server.props | Path on the file system or CLASSPATH to a properties file |
+
+For convenience one can also specify the list of `annotators` and the desired `output_format` in the `CoreNLPClient` constructor.
+The values for those two arguments will override any additional properties supplied at construction time.
+
+Below are examples that illustrate how to use the three different types of `properties`:
+
+- Using a language name:
+```python
+with CoreNLPClient(properties='french') as client:
+```
+As introduced above, this option allows quick switch between languages, and a default list of models will be used for each language.
+
+- Using a Python dictionary
+```python
+with CoreNLPClient(properties={
+        'annotators': 'tokenize,ssplit,pos',
+        'pos.model': '/path/to/custom-model.ser.gz'
+    }) as client:
+```
+This option allows you to override the default models used by the server, by providing (model name, model path) pairs.
+
+- Using a properties file:
+```python
+with CoreNLPClient(properties='/path/to/server.props') as client:
+```
+This option allows the finest level of control over what annotators and models are going to be used in the server. For details on how to write a property file, please see the [instructions on configuring CoreNLP property files](https://stanfordnlp.github.io/CoreNLP/cmdline.html#configuring-corenlp-properties).
 
 
 ## Switching Language
