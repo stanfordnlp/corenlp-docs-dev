@@ -25,6 +25,8 @@ There are a variety of ways to customize a CoreNLP pipeline, including:
 * using custom models (e.g. my-custom-depparse.gz)
 * returning different output formats (e.g. JSON)
 
+These customizations are achieved by specifying properties.
+
 The first step is always importing `CoreNLPClient`
 
 ```python
@@ -37,7 +39,6 @@ an example of launching a server with a different parser model
 that returns JSON:
 
 ```python
-
 CUSTOM_PROPS = {"parse.model": "edu/stanford/nlp/models/srparser/englishSR.beam.ser.gz"}
 
 with CoreNLPClient(properties=CUSTOM_PROPS, output_format="json") as client:
@@ -48,6 +49,10 @@ Or one could launch a server with CoreNLP French defaults as in this example:
 ```python
 with CoreNLPClient(properties="french") as client:
 ```
+
+When communicating with a CoreNLP server via Stanza, a user can send specific
+properties for one time use with that request. These request
+
 
 ## Switching Language
 
